@@ -1,196 +1,525 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Servicios en Redes Sociales</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="REFRIMASTER - Servicio Técnico Profesional de Refrigeración en Mompox. Más de 10 años de experiencia en aires acondicionados, neveras y lavadoras.">
+    <meta name="keywords" content="refrigeración, aire acondicionado, mantenimiento, reparación, Mompox, REFRIMASTER, servicio técnico, neveras, lavadoras">
+    <meta name="author" content="REFRIMASTER">
+    <title>REFRIMASTER | Excelencia en Refrigeración y Línea Blanca</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fdfdfd;
-      color: #333;
-    }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003366', // Azul Oscuro Profesional
+                        secondary: '#0ea5e9', // Azul Claro
+                        accent: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 
-    header {
-      background: #1e1e2f;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    section {
-      padding: 30px 15px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      color: #1e1e2f;
-      margin-bottom: 15px;
-    }
-
-    table {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      border-collapse: collapse;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    th {
-      background-color: #1e1e2f;
-      color: #fff;
-      padding: 12px;
-      font-weight: 600;
-    }
-
-    td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: center;
-    }
-
-    footer {
-      background-color: #f3f3f3;
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 3px solid #1e1e2f;
-    }
-
-    footer h3 {
-      margin-top: 0;
-      color: #1e1e2f;
-    }
-
-    a.btn-whatsapp {
-      display: inline-block;
-      margin: 10px auto;
-      padding: 12px 24px;
-      background-color: #25D366;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    a.btn-whatsapp:hover {
-      background-color: #1da851;
-    }
-
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      table {
-        font-size: 14px;
-      }
-
-      td, th {
-        padding: 8px;
-      }
-    }
-  </style>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581094288338-2314dddb7ead?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #003366; border-radius: 10px; }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 font-sans text-slate-800">
 
-  <header>
-    <h1>Impulsa tus Redes Sociales con Confianza</h1>
-    <p>Seguidores reales, resultados visibles y precios claros</p>
-  </header>
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-extrabold tracking-tighter text-primary">REFRI<span class="text-secondary">MASTER</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-slate-600 hover:text-primary font-medium transition">Inicio</a>
+                    <a href="#nosotros" class="text-slate-600 hover:text-primary font-medium transition">Nosotros</a>
+                    <a href="#servicios" class="text-slate-600 hover:text-primary font-medium transition">Servicios</a>
+                    <!-- Modificado para ir a WhatsApp -->
+                    <a href="https://wa.me/573113136214?text=Hola%20REFRIMASTER,%20deseo%20solicitar%20un%20servicio%20técnico." target="_blank" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-all shadow-lg">Solicitar Cita</a>
+                </div>
 
-  <section>
-    <h2>Visualización de Facebook</h2>
-    <table>
-      <tr><th>Visualizaciones</th><th>Precio</th></tr>
-      <tr><td>1k</td><td>$7,000</td></tr>
-      <tr><td>2k</td><td>$14,000</td></tr>
-      <tr><td>3k</td><td>$23,000</td></tr>
-      <tr><td>4k</td><td>$30,000</td></tr>
-      <tr><td>5k</td><td>$45,000</td></tr>
-    </table>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <h2>Suscriptores para YouTube</h2>
-    <table>
-      <tr><th>Suscriptores</th><th>Precio</th></tr>
-      <tr><td>1k</td><td>$20,000</td></tr>
-      <tr><td>2k</td><td>$25,000</td></tr>
-      <tr><td>3k</td><td>$35,000</td></tr>
-      <tr><td>4k</td><td>$45,000</td></tr>
-      <tr><td>5k</td><td>$55,000</td></tr>
-      <tr><td>6k</td><td>$65,000</td></tr>
-      <tr><td>7k</td><td>$75,000</td></tr>
-      <tr><td>8k</td><td>$85,000</td></tr>
-      <tr><td>9k</td><td>$95,000</td></tr>
-      <tr><td>10k</td><td>$115,000</td></tr>
-    </table>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#inicio" class="block px-3 py-2 text-slate-600 font-medium">Inicio</a>
+            <a href="#nosotros" class="block px-3 py-2 text-slate-600 font-medium">Nosotros</a>
+            <a href="#servicios" class="block px-3 py-2 text-slate-600 font-medium">Servicios</a>
+            <a href="https://wa.me/573113136214" target="_blank" class="block px-3 py-2 text-primary font-bold">Solicitar Servicio</a>
+        </div>
+    </nav>
 
-    <h2>Seguidores en Instagram</h2>
-    <table>
-      <tr><th>Seguidores</th><th>Precio</th></tr>
-      <tr><td>1k</td><td>$15,000</td></tr>
-      <tr><td>2k</td><td>$20,000</td></tr>
-      <tr><td>3k</td><td>$35,000</td></tr>
-      <tr><td>4k</td><td>$45,000</td></tr>
-      <tr><td>5k</td><td>$65,000</td></tr>
-      <tr><td>6k</td><td>$70,000</td></tr>
-      <tr><td>7k</td><td>$79,000</td></tr>
-      <tr><td>8k</td><td>$84,000</td></tr>
-      <tr><td>9k</td><td>$94,000</td></tr>
-      <tr><td>10k</td><td>$125,000</td></tr>
-    </table>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/573113136214?text=Hola,%20encontré%20su%20página%20web%20de%20REFRIMASTER%20y%20deseo%20solicitar%20información%20sobre%20sus%20servicios." 
+       target="_blank" 
+       class="whatsapp-float fixed bottom-6 right-6 z-50 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-colors">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <h2>Seguidores en TikTok</h2>
-    <table>
-      <tr><th>Seguidores</th><th>Precio</th></tr>
-      <tr><td>1k</td><td>$12,000</td></tr>
-      <tr><td>2k</td><td>$23,000</td></tr>
-      <tr><td>3k</td><td>$32,000</td></tr>
-      <tr><td>4k</td><td>$47,000</td></tr>
-      <tr><td>5k</td><td>$60,000</td></tr>
-      <tr><td>6k</td><td>$70,000</td></tr>
-      <tr><td>7k</td><td>$80,000</td></tr>
-      <tr><td>8k</td><td>$90,000</td></tr>
-      <tr><td>9k</td><td>$100,000</td></tr>
-      <tr><td>10k</td><td>$120,000</td></tr>
-    </table>
+    <!-- SECCIÓN HERO -->
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <div class="max-w-3xl reveal">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+                    REFRIMASTER
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-light text-secondary mb-6">
+                    Servicio Técnico de Refrigeración y Línea Blanca
+                </h2>
+                <p class="text-lg md:text-xl mb-10 text-slate-200">
+                    "Más de 10 años brindando soluciones rápidas y confiables en mantenimiento, instalación y reparación de equipos de refrigeración."
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <!-- Modificado: Redirección directa a WhatsApp -->
+                    <a href="https://wa.me/573113136214?text=Hola%20REFRIMASTER,%20deseo%20solicitar%20un%20servicio%20técnico%20ahora." target="_blank" class="bg-secondary hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-bold text-center transition-all transform hover:scale-105 shadow-xl">
+                        Solicitar Servicio <i class="fas fa-tools ml-2"></i>
+                    </a>
+                    <a href="#contacto" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-bold text-center transition-all">
+                        Ver Ubicación <i class="fas fa-map-marker-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h2>Seguidores para Facebook</h2>
-    <table>
-      <tr><th>Seguidores</th><th>Precio</th></tr>
-      <tr><td>1k</td><td>$10,000</td></tr>
-      <tr><td>2k</td><td>$22,000</td></tr>
-      <tr><td>3k</td><td>$30,000</td></tr>
-      <tr><td>4k</td><td>$45,000</td></tr>
-      <tr><td>5k</td><td>$55,000</td></tr>
-      <tr><td>6k</td><td>$65,000</td></tr>
-      <tr><td>7k</td><td>$75,000</td></tr>
-      <tr><td>8k</td><td>$80,000</td></tr>
-      <tr><td>9k</td><td>$95,000</td></tr>
-      <tr><td>10k</td><td>$110,000</td></tr>
-    </table>
-  </section>
+    <!-- SECCIÓN SOBRE NOSOTROS -->
+    <section id="nosotros" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-secondary/20 rounded-full blur-3xl"></div>
+                    <img src="https://images.unsplash.com/photo-1621905252507-b354bcadcabc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Técnico trabajando" class="rounded-2xl shadow-2xl relative z-10">
+                    <div class="absolute -bottom-6 -right-6 bg-primary p-8 rounded-2xl shadow-xl z-20 text-white text-center">
+                        <span class="block text-4xl font-bold" id="exp-counter">0</span>
+                        <span class="text-sm uppercase tracking-widest">Años de Experiencia</span>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h3 class="text-secondary font-bold tracking-widest uppercase mb-2">Sobre Nosotros</h3>
+                    <h2 class="text-4xl font-extrabold text-primary mb-6">Compromiso y Calidad en Cada Reparación</h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        Soy <strong>Luis Enrique Muñoz Arévalo</strong>, técnico en refrigeración con más de 10 años de experiencia ofreciendo servicios de instalación, mantenimiento y reparación de equipos de refrigeración y línea blanca en <strong>Mompox</strong> y sus alrededores.
+                    </p>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        Mi objetivo es brindar soluciones eficientes, garantizando la satisfacción de cada cliente mediante un trabajo profesional, responsable y con repuestos de alta calidad.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-semibold">Trabajo Garantizado</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-semibold">Atención Inmediata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <h3>Contáctanos para hacer tu pedido</h3>
-    <a class="btn-whatsapp" href="https://wa.me/+573107240680" target="_blank">📲 Escríbenos por WhatsApp</a>
-    <p>📧 Correo: <strong>tuemail@ejemplo.com</strong></p>
-    <p>💳 Métodos de pago: <strong>Nequi, Daviplata, Paypal, Bancolombia</strong></p>
-  </footer>
+    <!-- SECCIÓN SERVICIOS -->
+    <section id="servicios" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-extrabold text-primary mb-4">Nuestros Servicios Profesionales</h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                <p class="mt-6 text-slate-600 max-w-2xl mx-auto text-lg">Ofrecemos una amplia gama de soluciones técnicas para su hogar o negocio.</p>
+            </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20información%20sobre%20Instalación%20de%20Aires')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instalación de Aires</h3>
+                    <p class="text-slate-600">Montaje profesional de unidades Split y centrales con los más altos estándares.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20información%20sobre%20Mantenimiento%20Preventivo')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mantenimiento Preventivo</h3>
+                    <p class="text-slate-600">Limpieza profunda y revisión para prolongar la vida útil de sus equipos de aire.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20información%20sobre%20Reparación%20de%20Neveras')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reparación de Neveras</h3>
+                    <p class="text-slate-600">Servicio técnico para neveras domésticas y comerciales de todas las marcas.</p>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20información%20sobre%20Lavadoras%20y%20Secadoras')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lavadoras y Secadoras</h3>
+                    <p class="text-slate-600">Mantenimiento y reparación de línea blanca para que su hogar nunca se detenga.</p>
+                </div>
+                <!-- Servicio 5 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20información%20sobre%20Congeladores%20Comerciales')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Congeladores Comerciales</h3>
+                    <p class="text-slate-600">Soluciones rápidas para negocios, minimizando pérdidas por equipos dañados.</p>
+                </div>
+                <!-- Servicio 6 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-all reveal cursor-pointer" onclick="window.open('https://wa.me/573113136214?text=Deseo%20solicitar%20Servicio%20a%20Domicilio')">
+                    <div class="w-16 h-16 bg-blue-50 text-secondary rounded-xl flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Servicio a Domicilio</h3>
+                    <p class="text-slate-600">Nos desplazamos hasta su ubicación en Mompox y alrededores con prontitud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ¿POR QUÉ ELEGIRNOS? -->
+    <section class="py-24 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-extrabold mb-4">¿Por qué elegir REFRIMASTER?</h2>
+                <p class="text-blue-200">La confianza de nuestros clientes es nuestro mayor activo.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-user-tie text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Profesionalismo</h4>
+                    <p class="text-blue-100 text-sm">Técnicos certificados y con amplia trayectoria.</p>
+                </div>
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-shield-alt text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Garantía Real</h4>
+                    <p class="text-blue-100 text-sm">3 meses de respaldo total en cada servicio.</p>
+                </div>
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-clock text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Atención Rápida</h4>
+                    <p class="text-blue-100 text-sm">Entendemos la urgencia de sus equipos.</p>
+                </div>
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-home text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">A Domicilio</h4>
+                    <p class="text-blue-100 text-sm">Llegamos a cualquier punto de Mompox.</p>
+                </div>
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-hand-holding-dollar text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Precios Justos</h4>
+                    <p class="text-blue-100 text-sm">Diagnóstico honesto y tarifas competitivas.</p>
+                </div>
+                <div class="text-center p-6 reveal">
+                    <i class="fas fa-calendar-alt text-4xl text-secondary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Disponibilidad</h4>
+                    <p class="text-blue-100 text-sm">Atención de Lunes a Domingo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN GARANTÍA -->
+    <section class="py-16 bg-secondary">
+        <div class="max-w-5xl mx-auto px-4 text-center text-white reveal">
+            <div class="inline-block p-4 bg-white/20 rounded-full mb-6">
+                <i class="fas fa-award text-5xl"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Garantía de Servicio</h2>
+            <p class="text-xl opacity-90">"Todos nuestros servicios cuentan con una <strong>garantía de 3 meses</strong>, brindando confianza y respaldo total a nuestros clientes."</p>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE TRABAJOS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-primary mb-12 text-center reveal">Nuestro Trabajo en Acción</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                <img src="https://images.unsplash.com/photo-1599939571322-792a326991f2?auto=format&fit=crop&w=400&q=80" alt="Trabajo 1" class="rounded-xl h-64 w-full object-cover hover:opacity-90 transition cursor-pointer shadow-md">
+                <img src="https://images.unsplash.com/photo-1614633833026-002065655748?auto=format&fit=crop&w=400&q=80" alt="Trabajo 2" class="rounded-xl h-64 w-full object-cover hover:opacity-90 transition cursor-pointer shadow-md">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Trabajo 3" class="rounded-xl h-64 w-full object-cover hover:opacity-90 transition cursor-pointer shadow-md">
+                <img src="https://images.unsplash.com/photo-1558211583-d28f63069eb8?auto=format&fit=crop&w=400&q=80" alt="Trabajo 4" class="rounded-xl h-64 w-full object-cover hover:opacity-90 transition cursor-pointer shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-primary mb-12 text-center reveal">Lo que dicen nuestros clientes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 italic">"Excelente servicio. Repararon mi aire acondicionado el mismo día que llamé. Muy profesionales."</p>
+                    <div class="font-bold">- Carlos Rodríguez</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 italic">"Luis es muy honesto. Me explicó el daño de mi nevera y el precio fue muy justo. Recomendado 100%."</p>
+                    <div class="font-bold">- Maria Fernanda S.</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
+                    <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-slate-600 mb-6 italic">"Gran atención en Mompox. El mantenimiento preventivo dejó mis aires como nuevos."</p>
+                    <div class="font-bold">- Jorge Eliécer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-4xl font-extrabold text-primary mb-6">Contáctenos Hoy Mismo</h2>
+                    <p class="text-slate-600 mb-10 text-lg">Estamos listos para atender sus necesidades de refrigeración con rapidez y profesionalismo.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-secondary"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Ubicación</h4>
+                                <p class="text-slate-600">Mompox, Bolívar</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-secondary"><i class="fas fa-phone-alt text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Teléfono y WhatsApp</h4>
+                                <p class="text-slate-600">3113136214</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-secondary"><i class="fas fa-clock text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Horario de Atención</h4>
+                                <p class="text-slate-600">Lunes a Domingo: 7:00 a.m. – 7:00 p.m.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 md:p-12 rounded-3xl shadow-sm reveal">
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Nombre Completo</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Teléfono de Contacto</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Servicio Requerido</label>
+                            <select id="service" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition">
+                                <option>Mantenimiento de Aire Acondicionado</option>
+                                <option>Reparación de Nevera</option>
+                                <option>Reparación de Lavadora</option>
+                                <option>Instalación de Equipos</option>
+                                <option>Otro Servicio</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-secondary transition-all shadow-lg transform hover:-translate-y-1">
+                            Enviar Solicitud a WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <span class="text-3xl font-extrabold tracking-tighter">REFRI<span class="text-secondary">MASTER</span></span>
+                <p class="mt-2 text-slate-400">Luis Enrique Muñoz Arévalo</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-xl">
+                <a href="https://wa.me/573113136214" target="_blank" class="hover:text-secondary transition"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-secondary transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-slate-500 text-sm">
+                <p>Mompox, Bolívar | Teléfono: 3113136214</p>
+                <p class="mt-2">Copyright © 2026 REFRIMASTER. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Controladores de Navegación ---
+        const navbar = document.getElementById('navbar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+            }
+        });
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- Animaciones al hacer Scroll ---
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- Contador de Experiencia ---
+        let countStarted = false;
+        const countTo = 10;
+        const counterEl = document.getElementById('exp-counter');
+
+        const startCounter = () => {
+            let current = 0;
+            const timer = setInterval(() => {
+                current++;
+                counterEl.innerText = current;
+                if (current === countTo) {
+                    counterEl.innerText = current + "+";
+                    clearInterval(timer);
+                }
+            }, 100);
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0] && entries[0].isIntersecting && !countStarted) {
+                countStarted = true;
+                startCounter();
+            }
+        });
+        counterObserver.observe(counterEl);
+
+        // --- Manejo del Formulario (Redirección WhatsApp) ---
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+
+                // Formatear mensaje para WhatsApp
+                const waMessage = `Hola REFRIMASTER, mi nombre es ${name}. Deseo solicitar el servicio de: ${service}. Mi teléfono es ${phone}. Mensaje: ${message}`;
+                const encodedMessage = encodeURIComponent(waMessage);
+                
+                // Abrir WhatsApp en nueva pestaña
+                const whatsappURL = `https://wa.me/573113136214?text=${encodedMessage}`;
+                window.open(whatsappURL, '_blank');
+                
+                // Feedback visual
+                alert('¡Gracias! Serás redirigido a WhatsApp para completar tu solicitud.');
+            } catch (error) {
+                console.error('Error al procesar el formulario:', error);
+                alert('Hubo un error al procesar tu solicitud. Por favor intenta de nuevo.');
+            }
+        });
+
+        // Smooth Scroll Seguro para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#") {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
